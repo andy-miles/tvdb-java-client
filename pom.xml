@@ -208,10 +208,17 @@
                 <artifactId>maven-javadoc-plugin</artifactId>
                 <version>${maven.javadoc.plugin.version}</version>
                 <configuration>
-                    <additionalJOption>-Xdoclint:-missing,-reference</additionalJOption>
+                    <additionalJOption>-Xdoclint:none</additionalJOption>
                     <show>public</show>
-                    <sourcepath>${project.build}/generated-sources:${project.basedir}/src/main</sourcepath>
                 </configuration>
+                <executions>
+                    <execution>
+                        <id>attach-javadocs</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
             <plugin>
                 <groupId>com.mycila</groupId>
