@@ -15,6 +15,9 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
+  <a href="https://thetvdb.com/"><img src="https://thetvdb.com/images/attribution/logo1.png"/></a>
+  <br/>
+  <a href="https://thetvdb.com/">thetvdb.com</a>
   <h3 align="center">tvdb-java-client</h3>
 
   <p align="center">
@@ -51,6 +54,9 @@
 # About The Project
 
 An auto-generated client for Java programmatic access to [TheTVDB v4 API](https://thetvdb.github.io/v4-api/).
+
+Please
+
 
 
 ## Getting Started
