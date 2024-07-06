@@ -10,7 +10,7 @@ info:
     ## Notes
     1. "score" is a field across almost all entities.  We generate scores for different types of entities in various ways, so no assumptions should be made about the meaning of this value.  It is simply used to hint at relative popularity for sorting purposes.
   title: TVDB API V4
-  version: 4.7.9
+  version: 4.7.10
 security:
   - bearerAuth: [ ]
 paths:
@@ -2679,6 +2679,7 @@ components:
           format: int64
           type: integer
           x-go-name: PrimaryCompanyType
+          nullable: true
         slug:
           type: string
           x-go-name: Slug
@@ -2820,6 +2821,8 @@ components:
     EpisodeBaseRecord:
       description: base episode record
       properties:
+        absoluteNumber:
+          type: integer
         aired:
           type: string
         airsAfterSeason:
@@ -3233,6 +3236,7 @@ components:
           $ref: '#/components/schemas/Status'
         runtime:
           type: integer
+          nullable: true
         year:
           type: string
       type: object
@@ -3338,6 +3342,7 @@ components:
           x-go-name: RemoteIDs
         runtime:
           type: integer
+          nullable: true
         score:
           format: double
           type: number
@@ -4247,8 +4252,10 @@ components:
       properties:
         prev:
           type: string
+          nullable: true
         self:
           type: string
+          nullable: true
         next:
           type: string
         total_items:
