@@ -75,17 +75,36 @@ public class ApiClientFactory {
         }
 
         synchronized (lock) {
-            final AuthInfo authInfo = refresh(apiKey);
-            auth.set(authInfo);
+            if (isAuthenticated()) {
+                return Configuration.getDefaultApiClient();
+            }
 
-            final ApiClient apiClient = new ApiClient();
-            apiClient.setAccessToken(authInfo.getToken());
-            // Configure the default ApiClient instance so that all API classes can invoke the APIs with an
-            // auth token using the default ctor.
-            Configuration.setDefaultApiClient(apiClient);
-
-            return apiClient;
+            return newAuthenticatedClient();
         }
+    }
+
+    /**
+     * Forces (re)authentication for the {@link ApiClient}.
+     *
+     * @return the authenticated client instance
+     * @throws ApiException if an error occurred while obtaining the auth token
+     */
+    public ApiClient refreshAuthentication() throws ApiException {
+        auth.set(null);
+        return getAuthenticatedClient();
+    }
+
+    private ApiClient newAuthenticatedClient()  throws ApiException {
+        final AuthInfo authInfo = refresh(apiKey);
+        auth.set(authInfo);
+
+        final ApiClient apiClient = new ApiClient();
+        apiClient.setAccessToken(authInfo.getToken());
+        // Configure the default ApiClient instance so that all API classes can invoke the APIs with an
+        // auth token using the default ctor.
+        Configuration.setDefaultApiClient(apiClient);
+
+        return apiClient;
     }
 
     private boolean isAuthenticated() {
