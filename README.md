@@ -137,16 +137,16 @@ Project Link: [https://github.com/andy-miles/tvdb-java-client](https://github.co
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/andy-miles/onedrive-java-sdk.svg?style=for-the-badge
-[contributors-url]: https://github.com/andy-miles/onedrive-java-sdk/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/andy-miles/onedrive-java-sdk.svg?style=for-the-badge
-[forks-url]: https://github.com/andy-miles/onedrive-java-sdk/network/members
-[stars-shield]: https://img.shields.io/github/stars/andy-miles/onedrive-java-sdk.svg?style=for-the-badge
-[stars-url]: https://github.com/andy-miles/onedrive-java-sdk/stargazers
-[issues-shield]: https://img.shields.io/github/issues/andy-miles/onedrive-java-sdk.svg?style=for-the-badge
-[issues-url]: https://github.com/andy-miles/onedrive-java-sdk/issues
-[license-shield]: https://img.shields.io/github/license/andy-miles/onedrive-java-sdk.svg?style=for-the-badge
-[license-url]: https://github.com/andy-miles/onedrive-java-sdk/blob/master/LICENSE.txt
+[contributors-shield]: https://img.shields.io/github/contributors/andy-miles/tvdb-java-client.svg?style=for-the-badge
+[contributors-url]: https://github.com/andy-miles/tvdb-java-client/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/andy-miles/tvdb-java-client.svg?style=for-the-badge
+[forks-url]: https://github.com/andy-miles/tvdb-java-client/network/members
+[stars-shield]: https://img.shields.io/github/stars/andy-miles/tvdb-java-client.svg?style=for-the-badge
+[stars-url]: https://github.com/andy-miles/tvdb-java-client/stargazers
+[issues-shield]: https://img.shields.io/github/issues/andy-miles/tvdb-java-client.svg?style=for-the-badge
+[issues-url]: https://github.com/andy-miles/tvdb-java-client/issues
+[license-shield]: https://img.shields.io/github/license/andy-miles/tvdb-java-client.svg?style=for-the-badge
+[license-url]: https://github.com/andy-miles/tvdb-java-client/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/in/andy-miles
 [product-screenshot]: images/screenshot.png
