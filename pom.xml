@@ -282,6 +282,12 @@
                     </execution>
                 </executions>
             </plugin>
+            <!-- Required for maven-project-info-reports-plugin-3.8.0 for Doxia 2.0 stack -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-site-plugin</artifactId>
+                <version>3.21.0</version>
+            </plugin>
         </plugins>
     </build>
 
@@ -295,8 +301,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-project-info-reports-plugin</artifactId>
-                <!-- Note: 3.[7|8].0 fails to generate dependencies report (i.e., during SCM report generation). -->
-                <version>3.6.2</version>
+                <version>3.8.0</version>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
