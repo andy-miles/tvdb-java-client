@@ -125,7 +125,7 @@ Distributed under the MIT license. See [LICENSE](https://github.com/andy-miles/t
 <!-- CONTACT -->
 ## Contact
 
-Andy Miles - andy.miles@amilesend.com
+Andy Miles - andy.miles (at) amilesend.com
 
 Project Link: [https://github.com/andy-miles/tvdb-java-client](https://github.com/andy-miles/tvdb-java-client)
 
