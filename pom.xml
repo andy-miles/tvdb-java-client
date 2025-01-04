@@ -2,7 +2,7 @@
 <!--
 
     The MIT License
-    Copyright © 2024 Andy Miles
+    Copyright © 2024-2025 Andy Miles
 
     Permission is hereby granted, free of charge, to any person obtaining a copy
     of this software and associated documentation files (the "Software"), to deal
@@ -34,7 +34,7 @@
 
     <name>tvdb-java-client</name>
     <description>A swagger-generated TheTVDB v4 java client.</description>
-    <inceptionYear>2024</inceptionYear>
+    <inceptionYear>2024-2025</inceptionYear>
     <url></url>
     <organization>
         <name>Andy Miles</name>
@@ -236,6 +236,9 @@
                 <configuration>
                     <additionalJOption>-Xdoclint:none</additionalJOption>
                     <show>public</show>
+                    <bottom>
+                        <![CDATA[Copyright &#169; 2024-2025 <a href="https://www.amilesend.com">Andy Miles</a>. All rights reserved.]]>
+                    </bottom>
                 </configuration>
                 <executions>
                     <execution>
@@ -310,6 +313,9 @@
                 <configuration>
                     <additionalJOption>-Xdoclint:-missing,-reference</additionalJOption>
                     <show>public</show>
+                    <bottom>
+                        <![CDATA[Copyright &#169; 2024-2025 <a href="https://www.amilesend.com">Andy Miles</a>. All rights reserved.]]>
+                    </bottom>
                 </configuration>
                 <reportSets>
                     <reportSet>
