@@ -120,6 +120,8 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.javadoc.plugin.version>3.11.2</maven.javadoc.plugin.version>
         <okhttp.version>4.12.0</okhttp.version>
+        <spotbugs.version>4.9.2</spotbugs.version>
+        <spotbugs.maven.plugin.version>4.9.2.0</spotbugs.maven.plugin.version>
     </properties>
 
     <dependencies>
@@ -154,7 +156,7 @@
         <dependency>
             <groupId>io.swagger.core.v3</groupId>
             <artifactId>swagger-annotations</artifactId>
-            <version>2.2.28</version>
+            <version>2.2.29</version>
         </dependency>
         <dependency>
             <groupId>javax.annotation</groupId>
@@ -206,22 +208,77 @@
                         </goals>
                         <configuration>
                             <inputSpec>${project.basedir}/src/main/resources/swagger.yml</inputSpec>
-                            <language>java</language>
-                            <configOptions>
-                                <sourceFolder>src/gen/java/main</sourceFolder>
-                                <dateLibrary>java8</dateLibrary>
-                            </configOptions>
-                            <library>okhttp4-gson</library>
-                            <modelPackage>com.amilesend.tvdb.client.model</modelPackage>
-                            <apiPackage>com.amilesend.tvdb.client.api</apiPackage>
-                            <invokerPackage>com.amilesend.tvdb.client</invokerPackage>
+                            <generateApis>true</generateApis>
+                            <generateModels>true</generateModels>
                             <generateApiTests>false</generateApiTests>
                             <generateApiDocumentation>false</generateApiDocumentation>
                             <generateModelTests>false</generateModelTests>
                             <generateModelDocumentation>false</generateModelDocumentation>
+
+                            <!-- Work around to generate java scaffolding, but omitting build support files. -->
+                            <generateSupportingFiles>false</generateSupportingFiles>
+                            <environmentVariables>
+                                <supportingFiles>ApiCallback.java,ApiClient.java,ApiException.java,ApiResponse.java,Configuration.java,GzipRequestInterceptor.java,JSON.java,Pair.java,ProgressRequestBody.java,ProgressResponseBody.java,StringUtil.java,ApiKeyAuth.java,Authentication.java,HttpBasicAuth.java,OAuth.java,OAuthFlow.java</supportingFiles>
+                            </environmentVariables>
+
+                            <language>java</language>
+                            <output>.</output>
+                            <addCompileSourceRoot>false</addCompileSourceRoot>
+                            <configOptions>
+                                <sourceFolder>src/gen/java</sourceFolder>
+                                <apiPackage>com.amilesend.tvdb.client.api</apiPackage>
+                                <modelPackage>com.amilesend.tvdb.client.model</modelPackage>
+                                <invokerPackage>com.amilesend.tvdb.client</invokerPackage>
+                                <basePackage>com.amilesend.tvdb</basePackage>
+                                <library>okhttp4-gson</library>
+                                <dateLibrary>java11</dateLibrary>
+                                <hideGenerationTimestamp>true</hideGenerationTimestamp>
+                            </configOptions>
                         </configuration>
                     </execution>
                 </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>build-helper-maven-plugin</artifactId>
+                <version>3.6.0</version>
+                <executions>
+                    <execution>
+                        <id>add-source</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>add-source</goal>
+                        </goals>
+                        <configuration>
+                            <sources>
+                                <source>src/gen/java</source>
+                            </sources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>com.github.spotbugs</groupId>
+                <artifactId>spotbugs-maven-plugin</artifactId>
+                <version>${spotbugs.maven.plugin.version}</version>
+                <configuration>
+                    <includeFilterFile>src/main/spotbugs-include.xml</includeFilterFile>
+                    <excludeFilterFile>src/main/spotbugs-exclude.xml</excludeFilterFile>
+                    <plugins>
+                        <plugin>
+                            <groupId>com.h3xstream.findsecbugs</groupId>
+                            <artifactId>findsecbugs-plugin</artifactId>
+                            <version>1.12.0</version>
+                        </plugin>
+                    </plugins>
+                </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>com.github.spotbugs</groupId>
+                        <artifactId>spotbugs</artifactId>
+                        <version>${spotbugs.version}</version>
+                    </dependency>
+                </dependencies>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -258,9 +315,12 @@
                             <excludes>
                                 <exclude>**/README</exclude>
                                 <exclude>**/README.md</exclude>
+                                <exclude>**/VERSION</exclude>
+                                <exclude>**/.swagger-codegen-ignore</exclude>
                                 <exclude>src/main/resources/**</exclude>
                                 <exclude>src/test/resources/**</exclude>
                                 <exclude>src/main/*.xml</exclude>
+                                <exclude>src/gen/**</exclude>
                             </excludes>
                         </licenseSet>
                     </licenseSets>
@@ -275,6 +335,26 @@
                         <id>attach-source</id>
                         <goals>
                             <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <version>3.7.1</version>
+                <executions>
+                    <execution>
+                        <id>javadoc-jar</id>
+                        <phase>package</phase>
+                        <configuration>
+                            <appendAssemblyId>true</appendAssemblyId>
+                            <descriptors>
+                                <descriptor>src/main/docs-assemble.xml</descriptor>
+                            </descriptors>
+                        </configuration>
+                        <goals>
+                            <goal>single</goal>
                         </goals>
                     </execution>
                 </executions>
@@ -296,6 +376,22 @@
                 <version>3.21.0</version>
             </plugin>
             <plugin>
+                <groupId>com.github.spotbugs</groupId>
+                <artifactId>spotbugs-maven-plugin</artifactId>
+                <version>${spotbugs.maven.plugin.version}</version>
+                <configuration>
+                    <includeFilterFile>src/main/spotbugs-include.xml</includeFilterFile>
+                    <excludeFilterFile>src/main/spotbugs-exclude.xml</excludeFilterFile>
+                    <plugins>
+                        <plugin>
+                            <groupId>com.h3xstream.findsecbugs</groupId>
+                            <artifactId>findsecbugs-plugin</artifactId>
+                            <version>1.12.0</version>
+                        </plugin>
+                    </plugins>
+                </configuration>
+            </plugin>
+            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-project-info-reports-plugin</artifactId>
                 <version>3.9.0</version>
@@ -308,7 +404,9 @@
                     <additionalJOption>-Xdoclint:-missing,-reference</additionalJOption>
                     <show>public</show>
                     <bottom>
-                        <![CDATA[Copyright &#169; 2024-2025 <a href="https://www.amilesend.com">Andy Miles</a>. All rights reserved.]]>
+                        <![CDATA[Copyright &#169; 2024-2025 <a href="https://www.amilesend.com">Andy Miles</a>. All rights reserved.
+                        <br/>
+                        Generated documentation is respective of <a href="https://thetvdb.com/">The TVDB</a>'s copyright.]]>
                     </bottom>
                 </configuration>
                 <reportSets>
