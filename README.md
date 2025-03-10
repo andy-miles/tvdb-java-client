@@ -74,7 +74,7 @@ An auto-generated client for Java programmatic access to [TheTVDB v4 API](https:
   <groupId>com.amilesend</groupId>
   <artifactId>tvdb-java-client</artifactId>
   <version>4.0.8</version>
-</dependency> 
+</dependency>
 ```
 
 ## Recipes
