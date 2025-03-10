@@ -64,7 +64,18 @@ An auto-generated client for Java programmatic access to [TheTVDB v4 API](https:
 
 ## Getting Started
 
-You'll need to register for your own API key via [The TVDB API and Data Licensing](https://thetvdb.com/api-information)
+1. You'll need to register for your own API key via [The TVDB API and Data Licensing](https://thetvdb.com/api-information)
+
+2. Include this package as a dependency in your project. Note: This package is published to both
+[GitHub](https://github.com/andy-miles/tvdb-java-client/packages/2099998) and Maven Central repositories.
+
+```xml
+<dependency>
+  <groupId>com.amilesend</groupId>
+  <artifactId>tvdb-java-client</artifactId>
+  <version>4.0.8</version>
+</dependency> 
+```
 
 ## Recipes
 
