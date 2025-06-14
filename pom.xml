@@ -30,12 +30,12 @@
 
     <groupId>com.amilesend</groupId>
     <artifactId>tvdb-java-client</artifactId>
-    <version>4.0.9-SNAPSHOT</version>
+    <version>4.0.9</version>
 
     <name>tvdb-java-client</name>
     <description>A swagger-generated TheTVDB v4 java client.</description>
     <inceptionYear>2024-2025</inceptionYear>
-    <url></url>
+    <url>https://www.amilesend.com/tvdb-java-client/</url>
     <organization>
         <name>Andy Miles</name>
         <url>https://www.amilesend.com</url>
