@@ -119,7 +119,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.javadoc.plugin.version>3.11.2</maven.javadoc.plugin.version>
         <okhttp.version>5.1.0</okhttp.version>
-        <spotbugs.version>4.9.3</spotbugs.version>
+        <spotbugs.version>4.9.4</spotbugs.version>
         <spotbugs.maven.plugin.version>4.9.3.2</spotbugs.maven.plugin.version>
     </properties>
 
