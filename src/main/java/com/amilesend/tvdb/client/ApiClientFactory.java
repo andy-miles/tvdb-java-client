@@ -108,7 +108,7 @@ public class ApiClientFactory {
     }
 
     private boolean isAuthenticated() {
-        final boolean isAuthInfoValid = Optional.ofNullable(auth)
+        final boolean isAuthInfoValid = Optional.of(auth)
                 .map(AtomicReference::get)
                 .map(AuthInfo::isExpired)
                 .map(BooleanUtils::isFalse)
@@ -122,7 +122,7 @@ public class ApiClientFactory {
         return Optional.ofNullable(new LoginApi().loginPost(new LoginBody().apikey(apiKey)))
                 .map(InlineResponse200::getData)
                 .map(InlineResponse200Data::getToken)
-                .map(t -> new AuthInfo(t))
+                .map(AuthInfo::new)
                 .orElseThrow(() -> new ApiException("Unable to read auth token in response"));
     }
 
