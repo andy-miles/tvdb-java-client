@@ -120,7 +120,7 @@
         <maven.javadoc.plugin.version>3.11.3</maven.javadoc.plugin.version>
         <okhttp.version>5.1.0</okhttp.version>
         <spotbugs.version>4.9.4</spotbugs.version>
-        <spotbugs.maven.plugin.version>4.9.3.2</spotbugs.maven.plugin.version>
+        <spotbugs.maven.plugin.version>4.9.4.0</spotbugs.maven.plugin.version>
     </properties>
 
     <dependencies>
