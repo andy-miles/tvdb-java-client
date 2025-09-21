@@ -73,7 +73,7 @@ An auto-generated client for Java programmatic access to [TheTVDB v4 API](https:
 <dependency>
   <groupId>com.amilesend</groupId>
   <artifactId>tvdb-java-client</artifactId>
-  <version>4.1.1</version>
+  <version>4.1.2</version>
 </dependency>
 ```
 
