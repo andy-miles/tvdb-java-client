@@ -118,8 +118,8 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.javadoc.plugin.version>3.12.0</maven.javadoc.plugin.version>
         <okhttp.version>5.2.1</okhttp.version>
-        <spotbugs.version>4.9.6</spotbugs.version>
-        <spotbugs.maven.plugin.version>4.9.6.0</spotbugs.maven.plugin.version>
+        <spotbugs.version>4.9.7</spotbugs.version>
+        <spotbugs.maven.plugin.version>4.9.7.0</spotbugs.maven.plugin.version>
     </properties>
 
     <dependencies>
@@ -159,7 +159,7 @@
         <dependency>
             <groupId>io.swagger.core.v3</groupId>
             <artifactId>swagger-annotations</artifactId>
-            <version>2.2.38</version>
+            <version>2.2.39</version>
         </dependency>
     </dependencies>
 
@@ -193,7 +193,7 @@
             <plugin>
                 <groupId>io.swagger.codegen.v3</groupId>
                 <artifactId>swagger-codegen-maven-plugin</artifactId>
-                <version>3.0.74</version>
+                <version>3.0.75</version>
                 <executions>
                     <execution>
                         <goals>
